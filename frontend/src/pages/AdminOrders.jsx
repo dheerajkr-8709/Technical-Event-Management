@@ -15,7 +15,7 @@ export default function AdminOrders() {
 
  const fetchOrders = async () => {
  try {
- const res = await axios.get('http://localhost:5000/api/admin/orders', { headers });
+ const res = await axios.get('/admin/orders', { headers });
  setOrders(res.data);
  } catch (err) {
  setError('Failed to load orders');
@@ -26,7 +26,7 @@ export default function AdminOrders() {
 
  const handleStatusUpdate = async (id, status) => {
  try {
- await axios.put(`http://localhost:5000/api/admin/orders/${id}`, { status }, { headers });
+ await axios.put(`/admin/orders/${id}`, { status }, { headers });
  fetchOrders();
  } catch (err) {
  setError('Failed to update order status');
@@ -36,7 +36,7 @@ export default function AdminOrders() {
  const handleDelete = async (id) => {
  if (!confirm('Are you sure you want to delete this order?')) return;
  try {
- await axios.delete(`http://localhost:5000/api/admin/orders/${id}`, { headers });
+ await axios.delete(`/admin/orders/${id}`, { headers });
  fetchOrders();
  } catch (err) {
  setError('Failed to delete order');

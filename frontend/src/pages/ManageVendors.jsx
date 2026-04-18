@@ -22,7 +22,7 @@ export default function ManageVendors() {
 
  const fetchVendors = async () => {
  try {
- const res = await axios.get('http://localhost:5000/api/admin/vendors', { headers });
+ const res = await axios.get('/admin/vendors', { headers });
  setVendors(res.data);
  } catch (err) {
  setError('Failed to load vendors');
@@ -48,10 +48,10 @@ export default function ManageVendors() {
  if (editId) {
  const data = { name, email, category };
  if (password) data.password = password;
- await axios.put(`http://localhost:5000/api/admin/vendors/${editId}`, data, { headers });
+ await axios.put(`/admin/vendors/${editId}`, data, { headers });
  setSuccess('Vendor updated successfully');
  } else {
- await axios.post('http://localhost:5000/api/admin/vendors', { name, email, password, category }, { headers });
+ await axios.post('/admin/vendors', { name, email, password, category }, { headers });
  setSuccess('Vendor added successfully');
  }
  fetchVendors();
@@ -74,7 +74,7 @@ export default function ManageVendors() {
  const handleDelete = async (id) => {
  if (!confirm('Are you sure you want to delete this vendor?')) return;
  try {
- await axios.delete(`http://localhost:5000/api/admin/vendors/${id}`, { headers });
+ await axios.delete(`/admin/vendors/${id}`, { headers });
  fetchVendors();
  } catch (err) {
  setError('Failed to delete vendor');

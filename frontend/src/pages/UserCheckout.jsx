@@ -28,7 +28,7 @@ export default function UserCheckout() {
 
  const fetchCart = async () => {
  try {
- const res = await axios.get('http://localhost:5000/api/user/cart', { headers });
+ const res = await axios.get('/user/cart', { headers });
  setCart(res.data);
  if (!res.data.items || res.data.items.length === 0) {
  navigate('/user/cart');
@@ -53,7 +53,7 @@ export default function UserCheckout() {
  return;
  }
  try {
- const res = await axios.post('http://localhost:5000/api/user/checkout', form, { headers });
+ const res = await axios.post('/user/checkout', form, { headers });
  setOrderSuccess({ ...res.data.order, ...form });
  } catch (err) {
  setError(err.response?.data?.message || 'Checkout failed');

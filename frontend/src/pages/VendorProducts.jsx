@@ -19,7 +19,7 @@ export default function VendorProducts() {
 
  const fetchProducts = async () => {
  try {
- const res = await axios.get('http://localhost:5000/api/vendor/products', { headers });
+ const res = await axios.get('/vendor/products', { headers });
  setProducts(res.data);
  } catch (err) {
  setError('Failed to load products');
@@ -31,7 +31,7 @@ export default function VendorProducts() {
  const handleDelete = async (id) => {
  if (!confirm('Delete this product?')) return;
  try {
- await axios.delete(`http://localhost:5000/api/vendor/products/${id}`, { headers });
+ await axios.delete(`/vendor/products/${id}`, { headers });
  fetchProducts();
  } catch (err) {
  setError('Failed to delete product');
@@ -45,7 +45,7 @@ export default function VendorProducts() {
  if (editPrice) formData.append('price', editPrice);
  if (editImage) formData.append('image', editImage);
 
- await axios.put(`http://localhost:5000/api/vendor/products/${id}`, formData, {
+ await axios.put(`/vendor/products/${id}`, formData, {
  headers: { ...headers, 'Content-Type': 'multipart/form-data' }
  });
  setEditId(null);

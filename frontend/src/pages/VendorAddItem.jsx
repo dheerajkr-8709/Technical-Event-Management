@@ -24,7 +24,7 @@ export default function VendorAddItem() {
  formData.append('price', price);
  if (image) formData.append('image', image);
 
- await axios.post('http://localhost:5000/api/vendor/products', formData, {
+ await axios.post('/vendor/products', formData, {
  headers: { 
  Authorization: `Bearer ${token}`,
  'Content-Type': 'multipart/form-data'

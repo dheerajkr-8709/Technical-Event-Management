@@ -18,7 +18,7 @@ export default function AdminSignup() {
       return;
     }
     try {
-      await axios.post('http://localhost:5000/api/auth/admin/signup', { name, email, password });
+      await axios.post('/auth/admin/signup', { name, email, password });
       setSuccess('Admin registered successfully!');
       setTimeout(() => navigate('/admin/login'), 1500);
     } catch (err) {

@@ -20,8 +20,8 @@ export default function UserVendors() {
  setLoading(true);
  try {
  const url = category 
- ? `http://localhost:5000/api/user/vendors?category=${category}`
- : 'http://localhost:5000/api/user/vendors';
+ ? `/user/vendors?category=${category}`
+ : '/user/vendors';
  const res = await axios.get(url, {
  headers: { Authorization: `Bearer ${token}` }
  });

@@ -18,7 +18,7 @@ export default function UpdateMembership() {
  return;
  }
  try {
- const res = await axios.get(`http://localhost:5000/api/admin/membership/${membershipNumber}`, {
+ const res = await axios.get(`/admin/membership/${membershipNumber}`, {
  headers: { Authorization: `Bearer ${token}` }
  });
  setVendor(res.data);
@@ -30,7 +30,7 @@ export default function UpdateMembership() {
  const handleExtend = async () => {
  setError(''); setSuccess('');
  try {
- const res = await axios.put(`http://localhost:5000/api/admin/membership/${membershipNumber}`, 
+ const res = await axios.put(`/admin/membership/${membershipNumber}`, 
  { action: 'extend', extensionDuration },
  { headers: { Authorization: `Bearer ${token}` } }
  );
@@ -44,7 +44,7 @@ export default function UpdateMembership() {
  const handleCancel = async () => {
  setError(''); setSuccess('');
  try {
- const res = await axios.put(`http://localhost:5000/api/admin/membership/${membershipNumber}`, 
+ const res = await axios.put(`/admin/membership/${membershipNumber}`, 
  { action: 'cancel' },
  { headers: { Authorization: `Bearer ${token}` } }
  );

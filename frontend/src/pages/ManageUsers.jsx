@@ -21,7 +21,7 @@ export default function ManageUsers() {
 
  const fetchUsers = async () => {
  try {
- const res = await axios.get('http://localhost:5000/api/admin/users', { headers });
+ const res = await axios.get('/admin/users', { headers });
  setUsers(res.data);
  } catch (err) {
  setError('Failed to load users');
@@ -47,10 +47,10 @@ export default function ManageUsers() {
  if (editId) {
  const data = { name, email };
  if (password) data.password = password;
- await axios.put(`http://localhost:5000/api/admin/users/${editId}`, data, { headers });
+ await axios.put(`/admin/users/${editId}`, data, { headers });
  setSuccess('User updated successfully');
  } else {
- await axios.post('http://localhost:5000/api/admin/users', { name, email, password }, { headers });
+ await axios.post('/admin/users', { name, email, password }, { headers });
  setSuccess('User added successfully');
  }
  fetchUsers();
@@ -72,7 +72,7 @@ export default function ManageUsers() {
  const handleDelete = async (id) => {
  if (!confirm('Are you sure you want to delete this user?')) return;
  try {
- await axios.delete(`http://localhost:5000/api/admin/users/${id}`, { headers });
+ await axios.delete(`/admin/users/${id}`, { headers });
  fetchUsers();
  } catch (err) {
  setError('Failed to delete user');

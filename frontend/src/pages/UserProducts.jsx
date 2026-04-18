@@ -17,7 +17,7 @@ export default function UserProducts() {
 
  const fetchProducts = async () => {
  try {
- const res = await axios.get(`http://localhost:5000/api/user/vendors/${vendorId}/products`, {
+ const res = await axios.get(`/user/vendors/${vendorId}/products`, {
  headers: { Authorization: `Bearer ${token}` }
  });
  setProducts(res.data.products);
@@ -32,7 +32,7 @@ export default function UserProducts() {
  const addToCart = async (productId) => {
  setError(''); setSuccess('');
  try {
- await axios.post('http://localhost:5000/api/user/cart', { productId, quantity: 1 }, {
+ await axios.post('/user/cart', { productId, quantity: 1 }, {
  headers: { Authorization: `Bearer ${token}` }
  });
  setSuccess('Item added to cart!');

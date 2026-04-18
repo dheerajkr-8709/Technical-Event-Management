@@ -13,7 +13,7 @@ export default function UserOrderStatus() {
 
  const fetchOrders = async () => {
  try {
- const res = await axios.get('http://localhost:5000/api/user/orders', {
+ const res = await axios.get('/user/orders', {
  headers: { Authorization: `Bearer ${token}` }
  });
  setOrders(res.data);

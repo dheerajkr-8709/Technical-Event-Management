@@ -22,7 +22,7 @@ export default function UserGuestList() {
 
  const fetchGuests = async () => {
  try {
- const res = await axios.get('http://localhost:5000/api/user/guests', { headers });
+ const res = await axios.get('/user/guests', { headers });
  setGuests(res.data);
  } catch (err) {
  setError('Failed to load guests');
@@ -46,11 +46,11 @@ export default function UserGuestList() {
  }
  try {
  if (editId) {
- await axios.put(`http://localhost:5000/api/user/guests/${editId}`, 
+ await axios.put(`/user/guests/${editId}`, 
  { guestName, guestEmail, guestPhone, status }, { headers });
  setSuccess('Guest updated');
  } else {
- await axios.post('http://localhost:5000/api/user/guests', 
+ await axios.post('/user/guests', 
  { guestName, guestEmail, guestPhone }, { headers });
  setSuccess('Guest added');
  }
@@ -74,7 +74,7 @@ export default function UserGuestList() {
  const handleDelete = async (id) => {
  if (!confirm('Remove this guest?')) return;
  try {
- await axios.delete(`http://localhost:5000/api/user/guests/${id}`, { headers });
+ await axios.delete(`/user/guests/${id}`, { headers });
  fetchGuests();
  } catch (err) {
  setError('Failed to delete guest');

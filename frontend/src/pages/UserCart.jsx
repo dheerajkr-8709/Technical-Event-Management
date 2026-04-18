@@ -17,7 +17,7 @@ export default function UserCart() {
 
  const fetchCart = async () => {
  try {
- const res = await axios.get('http://localhost:5000/api/user/cart', { headers });
+ const res = await axios.get('/user/cart', { headers });
  setCart(res.data);
  } catch (err) {
  setError('Failed to load cart');
@@ -29,7 +29,7 @@ export default function UserCart() {
  const updateQuantity = async (itemId, quantity) => {
  if (quantity < 1) return;
  try {
- await axios.put(`http://localhost:5000/api/user/cart/${itemId}`, { quantity }, { headers });
+ await axios.put(`/user/cart/${itemId}`, { quantity }, { headers });
  fetchCart();
  } catch (err) {
  setError('Failed to update quantity');
@@ -38,7 +38,7 @@ export default function UserCart() {
 
  const removeItem = async (itemId) => {
  try {
- await axios.delete(`http://localhost:5000/api/user/cart/${itemId}`, { headers });
+ await axios.delete(`/user/cart/${itemId}`, { headers });
  fetchCart();
  } catch (err) {
  setError('Failed to remove item');
@@ -48,7 +48,7 @@ export default function UserCart() {
  const deleteAll = async () => {
  if (!confirm('Delete all items from cart?')) return;
  try {
- await axios.delete('http://localhost:5000/api/user/cart', { headers });
+ await axios.delete('/user/cart', { headers });
  fetchCart();
  } catch (err) {
  setError('Failed to clear cart');

@@ -17,7 +17,7 @@ export default function VendorProductStatus() {
 
  const fetchOrders = async () => {
  try {
- const res = await axios.get('http://localhost:5000/api/vendor/orders', { headers });
+ const res = await axios.get('/vendor/orders', { headers });
  setOrders(res.data);
  } catch (err) {
  setError('Failed to load orders');
@@ -28,7 +28,7 @@ export default function VendorProductStatus() {
 
  const handleStatusUpdate = async (id) => {
  try {
- await axios.put(`http://localhost:5000/api/vendor/orders/${id}`, { status: selectedStatus }, { headers });
+ await axios.put(`/vendor/orders/${id}`, { status: selectedStatus }, { headers });
  setUpdateOrderId(null);
  fetchOrders();
  } catch (err) {
@@ -39,7 +39,7 @@ export default function VendorProductStatus() {
  const handleDelete = async (id) => {
  if (!confirm('Delete this order?')) return;
  try {
- await axios.delete(`http://localhost:5000/api/vendor/orders/${id}`, { headers });
+ await axios.delete(`/vendor/orders/${id}`, { headers });
  fetchOrders();
  } catch (err) {
  setError('Failed to delete order');

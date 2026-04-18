@@ -18,7 +18,7 @@ export default function VendorLogin() {
       return;
     }
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/vendor/login', { email, password });
+      const res = await axios.post('/auth/vendor/login', { email, password });
       login(res.data.user, res.data.token);
       navigate('/vendor/dashboard');
     } catch (err) {

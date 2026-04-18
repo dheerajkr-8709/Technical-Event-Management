@@ -18,7 +18,7 @@ export default function UserSignup() {
       return;
     }
     try {
-      await axios.post('http://localhost:5000/api/auth/user/signup', { name, email, password });
+      await axios.post('/auth/user/signup', { name, email, password });
       setSuccess('User registered successfully!');
       setTimeout(() => navigate('/user/login'), 1500);
     } catch (err) {

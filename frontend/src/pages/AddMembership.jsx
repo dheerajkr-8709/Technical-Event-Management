@@ -18,7 +18,7 @@ export default function AddMembership() {
 
  const fetchVendors = async () => {
  try {
- const res = await axios.get('http://localhost:5000/api/admin/vendors', {
+ const res = await axios.get('/admin/vendors', {
  headers: { Authorization: `Bearer ${token}` }
  });
  setVendors(res.data);
@@ -38,7 +38,7 @@ export default function AddMembership() {
  return;
  }
  try {
- const res = await axios.post('http://localhost:5000/api/admin/membership', 
+ const res = await axios.post('/admin/membership', 
  { vendorId, membershipDuration: duration },
  { headers: { Authorization: `Bearer ${token}` } }
  );

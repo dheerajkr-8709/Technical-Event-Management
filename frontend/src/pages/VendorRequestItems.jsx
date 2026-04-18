@@ -13,7 +13,7 @@ export default function VendorRequestItems() {
 
  const fetchItems = async () => {
  try {
- const res = await axios.get('http://localhost:5000/api/vendor/request-items', {
+ const res = await axios.get('/vendor/request-items', {
  headers: { Authorization: `Bearer ${token}` }
  });
  setItems(res.data);

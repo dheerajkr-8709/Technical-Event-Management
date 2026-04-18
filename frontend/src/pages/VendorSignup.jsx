@@ -19,7 +19,7 @@ export default function VendorSignup() {
       return;
     }
     try {
-      await axios.post('http://localhost:5000/api/auth/vendor/signup', { name, email, password, category });
+      await axios.post('/auth/vendor/signup', { name, email, password, category });
       setSuccess('Vendor registered successfully!');
       setTimeout(() => navigate('/vendor/login'), 1500);
     } catch (err) {
